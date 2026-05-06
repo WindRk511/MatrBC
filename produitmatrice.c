@@ -1,21 +1,43 @@
 #include <stdio.h>
 
 int main() {
-    float m1[3],m2[3];
-    printf("Vecteur H 1 :\n");
-    for (int i = 0; i<3; i++) { scanf("%f",m1+i); }
-    printf("Vecteur V 2 :\n");
-    float S=0;
-    int j=0;
+    int i,j,k;
+    int d1[2],d2[2];
+    float m1[10][10],m2[10][10],m3[10][10],S;
     do {
-    for (int i = 0; i<3; i++) {
-        scanf("%f",m2+i);
-        S=S+(m1[i]*m2[i]);
+      printf("Dimention M1 : ");
+       scanf("%d %d",&d1[0],&d1[1]);
+       printf("Dimention M2 : ");
+        scanf("%d %d",&d2[0],&d2[1]);
+    } while (d1[1]!=d2[0]);
+    
+    printf("Matrice 1 :\n");
+    for(i=0;i<d1[0];i++) {
+        for(j=0;j<d1[1];j++) { scanf("%f",&m1[i][j]); }
     }
     
-    printf("S=%f\n",S);
-        S=0;
-    } while (++j<3);
     
+    printf("Matrice 2 :\n");
+    for(i=0;i<d1[0];i++) {
+        for(j=0;j<d1[1];j++) { scanf("%f",&m2[i][j]); }
+    }
+    
+    for(i=0; i< d1[0];i++) {
+        for(k=0;k<d2[1];k++) {
+            S=0;
+            for(j=0;j<d2[0];j++){
+                S=S+m1[i][j]*m2[j][k];
+            }
+            m3[i][k]=S;
+        }
+    }
+    printf("\nVotre Matrice :\n");
+    for(i=0;i<d2[0];i++){
+        for(j=0;j<d2[1];j++) {
+            if(m3[i][j]>=0) {printf(" ");}
+            printf("%f  ",m3[i][j]);
+        }
+        printf("\n");
+    }
     return 0;
 }
