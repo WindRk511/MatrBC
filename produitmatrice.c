@@ -35,7 +35,7 @@ int main() {
     for(i=0;i<d2[0];i++){
         for(j=0;j<d2[1];j++) {
             if(m3[i][j]>=0) {printf(" ");}
-            printf("%f  ",m3[i][j]);
+            printf("%g  ",m3[i][j]);
         }
         printf("\n");
     }
