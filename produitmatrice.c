@@ -1,9 +1,11 @@
 #include <stdio.h>
+#include "matrice.h"
 
-int main() {
+int produit() {
     int i,j,k;
+   // const int dmax=10;
     int d1[2],d2[2];
-    float m1[10][10],m2[10][10],m3[10][10],S;
+    float **m1,**m2,**m3,S;
   
   // Definition de dimention de matrice
     do {
@@ -15,17 +17,13 @@ int main() {
     
  // Remplisase de coeficient
     printf("Matrice 1 :\n");
-    for(i=0;i<d1[0];i++) {
-        for(j=0;j<d1[1];j++) { scanf("%f",&m1[i][j]); }
-    }
-    
+    m1=remplissage(d1);
     
     printf("Matrice 2 :\n");
-    for(i=0;i<d1[0];i++) {
-        for(j=0;j<d1[1];j++) { scanf("%f",&m2[i][j]); }
-    }
-    
+    m2=remplissage(d2);
+  
   //calcule le produit de deux matrice
+  m3=reserver(d2[0],d2[1]);
     for(i=0; i< d1[0];i++) {
         for(k=0;k<d2[1];k++) {
             S=0;
@@ -38,12 +36,10 @@ int main() {
   
   // Affichage du resultat
     printf("\nVotre Matrice :\n");
-    for(i=0;i<d2[0];i++){
-        for(j=0;j<d2[1];j++) {
-            if(m3[i][j]>=0) {printf(" ");}
-            printf("%g  ",m3[i][j]);
-        }
-        printf("\n");
-    }
+    voir(m3,d2);
+  
+  liberer(m1,d1[0],d1[1]);
+  liberer(m2,d2[0],d2[1]);
+  liberer(m3,d2[0],d2[1]);
     return 0;
 }
