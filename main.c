@@ -2,6 +2,7 @@
 #include "matrice.h"
 
 int main() {
-    produit();
+    menu();
+    //produit();
     return 0;
 }

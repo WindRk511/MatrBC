@@ -1,3 +1,8 @@
+/** 
+ * @file produitmatrice.c
+ * @brief calcule de produit matriciel
+ */
+ 
 #include <stdio.h>
 #include "matrice.h"
 

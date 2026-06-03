@@ -1,3 +1,8 @@
+/**
+ * @file divers.c
+ * @brief divers utilitaire
+ */
+ 
 #include<stdio.h>
 #include<stdlib.h>
 #include"matrice.h"
@@ -35,4 +40,18 @@ void liberer(float** M, int l, int c) {
     for (int i=0; i<c ;i++)
         free(M[i]);
     free(M);
+}
+
+int* dimdef() {
+    int *dim=malloc(sizeof(int)*2);
+    int i=0;
+    do {
+        if(i>0) { 
+            printf("\e[2m Le dimension doit être positif !\n\e[0m");
+            printf("Reessayer svp\n : ");
+        }
+        scanf("%d %d",&dim[0],&dim[1]);
+        i++;
+    } while(dim[0] <= 0 || dim[1] <=0 );
+    return dim;
 }
