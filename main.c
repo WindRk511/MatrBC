@@ -3,6 +3,5 @@
 
 int main() {
     menu();
-    //produit();
     return 0;
 }

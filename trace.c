@@ -5,6 +5,7 @@
  
 #include <stdio.h>
 #include"matrice.h"
+#include<stdlib.h>
 
 int trace() {
     int *dim;
