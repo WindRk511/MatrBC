@@ -45,6 +45,7 @@ void liberer(float** M, int l, int c) {
 int* dimdef() {
     int *dim=malloc(sizeof(int)*2);
     int i=0;
+    printf("Entrer la dimension de matrice :");
     do {
         if(i>0) { 
             printf("\e[2m Le dimension doit être positif !\n\e[0m");
@@ -54,4 +55,23 @@ int* dimdef() {
         i++;
     } while(dim[0] <= 0 || dim[1] <=0 );
     return dim;
+}
+
+stmat* cremat(int l, int c) {
+    stmat* sm=malloc(sizeof(stmat));
+    sm->d[0] = l; 
+    sm->d[1] = c;
+    sm->m=remplissage(sm->d);
+    return sm;
+}
+
+void liberersm(stmat M) {
+    liberer(M.m,M.d[0],M.d[1]);
+}
+
+stmat reserversm(int l, int c) {
+    stmat sm;
+    sm.d[0]=l; sm.d[1]=c;
+    sm.m=reserver(l,c);
+    return sm;
 }
