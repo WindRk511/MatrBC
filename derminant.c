@@ -1,25 +1,28 @@
 #include <stdio.h>
 #include "matrice.h"
 #include<stdlib.h>
+#include "matrice2sm.h"
 
 int deter() {
-    int *dim=dimdef();
-    float **M;
+    stmat m;
     float det;
+    int dim[2];
     
-    if (dim[0]!=dim[1]) {
-        printf("\nIl faut matrice carré pour calculer le determinant\n");
-        free(dim);
-        return 1;
-    }
+    do {
+        printf("Entrer le dimention : ");
+        scanf("%d %d",dim,dim+1);
+        if (dim[0]!=dim[1]) {
+            printf("\nIl faut matrice carré pour calculer le determinant\n");
+        }
+    } while (dim[0]!=dim[1]);
     
-    printf("Entrer votre matrice %dx%d :\n",dim[0],dim[1]);
-    M=remplissage(dim);
-    det=codet(M,dim);
+    printf("Remplie les coeffient : \n");
+    m=resremsm(dim[0],dim[1]);
+    
+    det=codet(m.m,m.d);
     printf("\n Determinant = %g \n",det);
     
-    liberer(M,dim[0],dim[1]);
-    free(dim);
+    liberersm(m);
     return 0;
 }
 

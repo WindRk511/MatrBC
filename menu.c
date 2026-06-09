@@ -5,6 +5,8 @@
 
 #include <stdio.h>
 #include"matrice.h"
+#include"matrice2sm.h"
+
 int menu() {
     int i=0,choix;
     printf("%d) Produit de matrice\n",++i);
@@ -13,7 +15,7 @@ int menu() {
    printf("> ");
     scanf("%d",&choix);
     switch (choix) {
-       case 1: produit(); break;
+       case 1: mproduit(); break;
         case 2: trace(); break;
        case 3: deter(); break;
         default : printf("Choix incorrect\n"); break;
