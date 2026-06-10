@@ -4,47 +4,71 @@
  */
  
 #include <stdio.h>
+#include <stdlib.h>
 #include "matrice.h"
+#include "matrice2sm.h"
 
-int produit() {
+void mproduit() {
+    
+    int Nm,i;
+    stmat* m,M,temp;
+    int dim[2];
+    printf("Nombre de matrice : ");
+    scanf("%d",&Nm);
+    m=malloc(sizeof(stmat)*Nm);
+    
+    for (i=0; i < Nm; i++ ) {
+        printf(">Matrice %d \n", i+1);
+        printf("Dimension : ");
+        scanf("%d %d",dim,dim+1);
+        
+        if(i>0 && dim[0] != m[i-1].d[1]) {
+            printf("\n!!! %dx%d n'est pas compatible avec %dx%d de matrice precedent\n",dim[0],dim[1],m[i-1].d[0],m[i-1].d[1]);
+            printf("Veuiller reentrer,svp\n");
+            i--;
+            continue;
+          }
+        
+         printf("Entrer les coefficients :\n");
+        m[i]=resremsm(*dim,*(dim+1));
+    }
+    
+    
+    M=m[0];
+    for(i=1; i<Nm; i++) {
+        temp=M;
+        M=produit(M,m[i]);
+       if(i>1) { liberersm(temp); }
+    }
+    
+    printf("\nLe produit est :\n");
+    // printf( "de taille %dx%d\n",M.d[0],M.d[1]);
+    voirsm(M);
+    
+    // Liberation de memoire
+    for(i=0;i<Nm;i++) {
+        liberersm(m[i]);
+    }
+    liberersm(M);
+    free(m);
+}
+
+stmat produit(stmat m1,stmat m2) {
     int i,j,k;
-   // const int dmax=10;
-    int d1[2],d2[2];
-    float **m1,**m2,**m3,S;
-  
-  // Definition de dimention de matrice
-    do {
-      printf("Dimention M1 : ");
-       scanf("%d %d",&d1[0],&d1[1]);
-       printf("Dimention M2 : ");
-        scanf("%d %d",&d2[0],&d2[1]);
-    } while (d1[1]!=d2[0]);
-    
- // Remplisase de coeficient
-    printf("Matrice 1 :\n");
-    m1=remplissage(d1);
-    
-    printf("Matrice 2 :\n");
-    m2=remplissage(d2);
+    stmat M;
+    float S;
   
   //calcule le produit de deux matrice
-  m3=reserver(d2[0],d2[1]);
-    for(i=0; i< d1[0];i++) {
-        for(k=0;k<d2[1];k++) {
+  M=reserversm(m2.d[0],m2.d[1]);
+    for(i=0; i< m1.d[0];i++) {
+        for(k=0;k<m2.d[1];k++) {
             S=0;
-            for(j=0;j<d2[0];j++){
-                S=S+m1[i][j]*m2[j][k];
+            for(j=0;j<m2.d[0];j++){
+                S=S+m1.m[i][j]*m2.m[j][k];
             }
-            m3[i][k]=S;
+            M.m[i][k]=S;
         }
     }
   
-  // Affichage du resultat
-    printf("\nVotre Matrice :\n");
-    voir(m3,d2);
-  
-  liberer(m1,d1[0],d1[1]);
-  liberer(m2,d2[0],d2[1]);
-  liberer(m3,d2[0],d2[1]);
-    return 0;
+    return M;
 }

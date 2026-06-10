@@ -3,36 +3,23 @@
  * @brief en tête des fontions
  */
 
+#include"matrice2sm.h"
 #ifndef MATRICE_H
 #define MATRICE_H
 
-typedef struct {
-    int d[2];
-    float **m;
-} stmat;
 
-stmat* cremat(int ligne, int colonne);
 float codet(float** M, int dim[]);
 int deter();
-stmat reserversm(int l, int c);
-void liberersm(stmat M);
 
 /**
  * @brief calcule produit magriciel
  */
-int produit();
+// int produit();
 
 /**
  * @brief calcul trace
  */
 int trace();
-
-/**
- * @brief remplissage des coefficients de matrice
- * @param dimention tableau de dimention
- * @return matrice remplie
- */
-float** remplissage(int* dimension);
 
 /**
  * @brief voir affiche la matrice
