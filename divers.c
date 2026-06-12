@@ -5,14 +5,15 @@
  
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include"matrice.h"
 #include"matrice2sm.h"
 
 float** reserver(int l, int c) {
     float** M;
     M=malloc((sizeof(float*)*l));
-    for (int i=0; i<c ;i++)
-        M[i]=malloc((sizeof(float)*l));
+    for (int i=0; i< l ;i++)
+        M[i]=malloc((sizeof(float)*c));
     return M;
 }
 
@@ -59,7 +60,7 @@ void voir(float** M, int* dim) {
 void voirsm(stmat sm) {
     int i,j;
     float **M=sm.m;
-    
+    printf(" %dx%d \n",sm.d[0],sm.d[1]);
     for(i=0;i<sm.d[0];i++){
         for(j=0;j<sm.d[1];j++) {
             if(M[i][j]>=0) {printf(" ");}
@@ -79,5 +80,41 @@ void liberersm(stmat M) {
     liberer(M.m,M.d[0],M.d[1]);
 }
 
+stmat croixsup(stmat M,int li, int cl) {
+    stmat m=reserversm(M.d[0]-1,M.d[1]-1);
+        float *pm;
+        int p=0;
+        for(int j=0; j< M.d[0]; j++) {
+           pm=&m.m[p][0];
+            for(int k=0; k<M.d[1]; k++) {
+                if(k==cl) { continue;}
+                else if(j==li) { p--; break; }
+                *pm=M.m[j][k];
+               if (pm+1 == NULL) { break; }
+               pm++;
+            }
 
+           if (p+1 == m.d[0]) { break; }
+           p++;
+        }
+    return m;
+}
 
+stmat dimdefsm(stmat M) {
+    char c[6];
+    while(getchar()!='\n');
+    fgets(c,5,stdin);
+    printf("%s\n",c);
+    if(strchr(c,'x')!=NULL)
+      sscanf(c, "%dx%d",&M.d[0],&M.d[1]);
+    else 
+        sscanf(c, "%d %d",&M.d[0],&M.d[1]);
+    
+    if(M.d[0]==0 || M.d[1]==0) {
+        printf("Dimension %dx%d est non valide.\n",M.d[0],M.d[1]);
+        printf("Reentrer svp : ");
+        M=dimdefsm(M);
+    }
+    
+    return M;
+}

@@ -9,7 +9,7 @@
 
 
 float codet(float** M, int dim[]);
-int deter();
+void mdeter();
 
 /**
  * @brief calcule produit magriciel
@@ -19,7 +19,7 @@ int deter();
 /**
  * @brief calcul trace
  */
-int trace();
+void mtrace();
 
 /**
  * @brief voir affiche la matrice
@@ -54,5 +54,7 @@ int* dimdef();
  * @brief raccourcie vers à des fonction
  */
 int menu();
+void mcomat();
+
 #endif //MATRICE_H
 

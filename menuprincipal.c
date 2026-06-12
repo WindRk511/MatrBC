@@ -1,0 +1,40 @@
+/**
+ * @file menu.c
+ * @brief raccourci vers les fonctions
+ */
+
+#include <stdio.h>
+#include"matrice.h"
+#include"matrice2sm.h"
+
+int menu() {
+    int i=0,choix;
+    printf("%d) Produit de matrice\n",++i);
+    printf("%d) Trace de matrice\n",++i);
+    printf("%d) Determinant\n",++i);
+    printf("%d) Inverse\n",++i);
+    printf("%d) comatrice\n",++i);
+    printf("> ");
+    scanf("%d",&choix);
+    switch (choix) {
+       case 1: mproduit(); break;
+       case 2: mtrace(); break;
+       case 3: mdeter(); break;
+       case 4: minv(); break;
+       case 5: mcomat(); break;
+       default : printf("Choix incorrect\n"); break;
+        
+    }
+    return 0;
+}
+
+stmat mmcreat() {
+   stmat m;
+   printf("Entrer la taille de matrice : ");
+   m=dimdefsm(m);
+   
+   printf("Entrer les coefficient : \n");
+   m=resremsm(m.d[0],m.d[1]);
+   
+   return m;
+}
