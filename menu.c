@@ -8,6 +8,17 @@
 #include"matrice.h"
 #include"matrice2sm.h"
 
+stmat mmcreat() {
+   stmat m;
+   printf("Entrer la taille de matrice : ");
+   m=dimdefsm(m);
+   
+   printf("Entrer les coefficient : \n");
+   m=resremsm(m.d[0],m.d[1]);
+   
+   return m;
+}
+
 void minv() {
     stmat M,mi;
     M=mmcreat();
@@ -101,6 +112,9 @@ void mtrace() {
     liberersm(M);
 }
 
+/** 
+ * @brief menu commatrice
+ */
 void mcomat() {
     stmat M=mmcreat();
     stmat com=comatsm(M);

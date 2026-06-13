@@ -1,6 +1,6 @@
 /**
- * @file trace.c
- * @brief calcul trace
+ * @file duvers2.c
+ * @brief outil supplementaire 
  */
  
 #include <stdio.h>
@@ -39,7 +39,6 @@ stmat trasprep(stmat M) {
 }
 
 //comatrice
-
 stmat comat2sm(stmat M) {
     stmat m=reserversm(M.d[0],M.d[1]);
     m.m[0][0]=M.m[1][1];

@@ -28,13 +28,3 @@ int menu() {
     return 0;
 }
 
-stmat mmcreat() {
-   stmat m;
-   printf("Entrer la taille de matrice : ");
-   m=dimdefsm(m);
-   
-   printf("Entrer les coefficient : \n");
-   m=resremsm(m.d[0],m.d[1]);
-   
-   return m;
-}
