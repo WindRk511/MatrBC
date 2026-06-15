@@ -8,6 +8,7 @@
 #include"matrice.h"
 #include"matrice2sm.h"
 
+//menu de creation de matrice
 stmat mmcreat() {
    stmat m;
    printf("Entrer la taille de matrice : ");
@@ -19,6 +20,7 @@ stmat mmcreat() {
    return m;
 }
 
+//menu de l'inverse
 void minv() {
     stmat M,mi;
     M=mmcreat();
@@ -34,6 +36,7 @@ void minv() {
     liberersm(mi);
 }
 
+//menu de produit
 void mproduit() {
     int Nm,i;
     stmat* m,M,temp;
@@ -67,7 +70,6 @@ void mproduit() {
     }
     
     printf("\nLe produit est :\n");
-    // printf( "de taille %dx%d\n",M.d[0],M.d[1]);
     voirsm(M);
     
     // Liberation de memoire
@@ -78,6 +80,7 @@ void mproduit() {
     free(m);
 }
 
+// menu calcul determinant
 void mdeter() {
     stmat m;
     float det;
@@ -100,6 +103,7 @@ void mdeter() {
     liberersm(m);
 }
 
+// menu trace
 void mtrace() {
     float s=0;
     stmat M;
@@ -113,7 +117,7 @@ void mtrace() {
 }
 
 /** 
- * @brief menu commatrice
+ * @brief menu comatrice
  */
 void mcomat() {
     stmat M=mmcreat();

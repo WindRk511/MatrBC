@@ -42,7 +42,7 @@ float** reserver(int ligne, int colonne);
  * @param ligne nombre de ligne
  * @param colone nombre de colonne
  */
-void liberer(float** matrice, int ligne, int colonne);
+void liberer(float** matrice, int ligne);
 
 /**
  * @brief definition de dimention
@@ -53,8 +53,9 @@ int* dimdef();
 /**
  * @brief raccourcie vers à des fonction
  */
-int menu();
+int menu(int n);
 void mcomat();
+int arganalyse(int argc,char *argv[]);
 
 #endif //MATRICE_H
 

@@ -63,21 +63,21 @@ void voirsm(stmat sm) {
     printf(" %dx%d \n",sm.d[0],sm.d[1]);
     for(i=0;i<sm.d[0];i++){
         for(j=0;j<sm.d[1];j++) {
-            if(M[i][j]>=0) {printf(" ");}
+            if(M[i][j]>=0) { printf(" "); }
             printf("%g  ",M[i][j]);
         }
         printf("\n");
     }
 }
 
-void liberer(float** M, int l, int c) {
-    for (int i=0; i<c ;i++)
+void liberer(float** M, int ligne) {
+    for (int i=0; i<ligne ;i++)
         free(M[i]);
     free(M);
 }
 
 void liberersm(stmat M) {
-    liberer(M.m,M.d[0],M.d[1]);
+    liberer(M.m,M.d[0]);
 }
 
 stmat croixsup(stmat M,int li, int cl) {
@@ -118,3 +118,8 @@ stmat dimdefsm(stmat M) {
     
     return M;
 }
+
+
+    
+    
+

@@ -1,5 +1,5 @@
 /**
- * @file duvers2.c
+ * @file divers2.c
  * @brief outil supplementaire 
  */
  
