@@ -11,6 +11,8 @@ int menu(int choix) {
     int i=0;
    if(choix == 0) {
       printf("%d) Produit de matrice\n",++i);
+      printf("%d) Somme\n",++i);
+      printf("%d) Difference\n",++i);
       printf("%d) Trace de matrice\n",++i);
       printf("%d) Determinant\n",++i);
       printf("%d) Inverse\n",++i);
@@ -20,10 +22,12 @@ int menu(int choix) {
    }
     switch (choix) {
        case 1: mproduit(); break;
-       case 2: mtrace(); break;
-       case 3: mdeter(); break;
-       case 4: minv(); break;
-       case 5: mcomat(); break;
+       case 2: msomme('+'); break;
+       case 3: msomme('-'); break;
+       case 4: mtrace(); break;
+       case 5: mdeter(); break;
+       case 6: minv(); break;
+       case 7: mcomat(); break;
        default : printf("Choix incorrect\n"); menu(0); break;
     }
     return 0;

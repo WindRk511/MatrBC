@@ -20,6 +20,35 @@ stmat mmcreat() {
    return m;
 }
 
+//menu de creation de matrice
+stmat mmcreatc(int* d, char op) {
+   stmat m;
+   int i=0;
+   while(i==0) {
+      printf("Entrer la taille de matrice : ");
+      m=dimdefsm(m);
+      if(op == 's') {
+         if(compatibility(d,m.d,op)<0) {
+            printf("%dx%d incompatible avec %dx%d\n",d[0],d[1],m.d[0],m.d[1]);
+            printf("Ressayer svp\n"); continue;
+         }
+      }
+      else if(op == 'p') {
+         if(compatibility(d,m.d,op)<0) {
+            printf("%dx%d incompatible avec %dx%d\n",d[0],d[1],m.d[0],m.d[1]);
+            printf("Ressayer svp\n"); continue;
+         }
+      }
+      else  { fprintf(stderr,"Operateur non definie\n"); exit(1); }
+    i++;  
+   };
+   
+   printf("Entrer les coefficient : \n");
+   m=resremsm(m.d[0],m.d[1]);
+   
+   return m;
+}
+
 //menu de l'inverse
 void minv() {
     stmat M,mi;
@@ -48,18 +77,7 @@ void mproduit() {
     
     for (i=0; i < Nm; i++ ) {
         printf(">Matrice %d \n", i+1);
-        printf("Dimension : ");
-        scanf("%d %d",dim,dim+1);
-        
-        if(i>0 && dim[0] != m[i-1].d[1]) {
-            printf("\n!!! %dx%d n'est pas compatible avec %dx%d de matrice precedent\n",dim[0],dim[1],m[i-1].d[0],m[i-1].d[1]);
-            printf("Veuiller reentrer,svp\n");
-            i--;
-            continue;
-          }
-        
-         printf("Entrer les coefficients :\n");
-        m[i]=resremsm(*dim,*(dim+1));
+        m[i]=mmcreatc(m[i-1].d,'p');
     }
     
     M=m[0];
@@ -129,3 +147,37 @@ void mcomat() {
     liberersm(M); liberersm(com);
     
 }
+
+void msomme(char op) {
+   stmat m,S,smtemp;
+   int i,Nm,d[2];
+   
+   printf("Entrer le nombre de matrice : ");
+   scanf("%d",&Nm);
+   printf("Entrer la taille de ces matrices : ");
+   scanf("%d %d",d,d+1);
+   
+   
+   for(i=0; i < Nm;i++) {
+     printf("Matrice %d:\n",i+1);
+      m=resremsm(*d,*(d+1));
+      
+      if(i<1) { S=m; continue; }
+      smtemp=S;
+      if(op=='+')
+      S=sommesm(S,m);
+      else if (op=='-')
+      S=soustractionsm(S,m);
+      liberersm(smtemp);
+      liberersm(m);
+   }
+   
+   switch (op){
+      case '+': printf("La somme :\n"); break;
+      case '-': printf("La differencr :\n"); break;
+      default: break;
+   }
+   voirsm(S);
+   liberersm(S);
+}
+

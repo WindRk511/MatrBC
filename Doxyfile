@@ -1,0 +1,3 @@
+INTPUT = src include ./*
+RECURSIVE = YES
+FILLE_PATTERNs = *.h *.c *.md 

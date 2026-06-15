@@ -56,6 +56,7 @@ int* dimdef();
 int menu(int n);
 void mcomat();
 int arganalyse(int argc,char *argv[]);
-
+int compatibilitysm(stmat matrice_1,stmat matrice_2,char operateur);
+int compatibility(int* d1,int* d2,char o);
 #endif //MATRICE_H
 

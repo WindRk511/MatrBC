@@ -120,5 +120,7 @@ stmat mmcreat();
  * @brief calcul trace
  */
 float tracesm(stmat M); 
-
+stmat sommesm(stmat m1,stmat m2);
+stmat soustractionsm(stmat m1,stmat m2);
+void msomme(char op);
 #endif //MATRICE2SM_H

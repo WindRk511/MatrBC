@@ -60,7 +60,6 @@ void voir(float** M, int* dim) {
 void voirsm(stmat sm) {
     int i,j;
     float **M=sm.m;
-    printf(" %dx%d \n",sm.d[0],sm.d[1]);
     for(i=0;i<sm.d[0];i++){
         for(j=0;j<sm.d[1];j++) {
             if(M[i][j]>=0) { printf(" "); }
@@ -117,6 +116,28 @@ stmat dimdefsm(stmat M) {
     }
     
     return M;
+}
+
+int compatibility(int* d1,int* d2,char o) {
+   
+    switch (o) {
+          // compatibilité sur produit
+        case 'p':
+        if(d1[0]!=d2[1]) {
+            return -1;
+        } else return 1;
+        break;
+        
+          // compatibilité sur produit
+        case 's':
+        if(d1[0]!=d2[0] || d1[1]!=d2[1]) {
+            return -1;
+        } else return 1;
+        break;
+        default: printf("Operateur non disponible"); return 0; break;
+        
+    }
+    return 1;
 }
 
 

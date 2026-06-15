@@ -66,4 +66,25 @@ stmat comatsm(stmat M) {
     return cm;
 }
 
+int compatibilitysm(stmat m1,stmat m2,char o) {
+   
+    switch (o) {
+          // compatibilité sur produit
+        case 'p':
+        if(m1.d[0]!=m2.d[1]) {
+            return -1;
+        }
+        break;
+        
+          // compatibilité sur produit
+        case 's':
+        if(m1.d[0]!=m2.d[0] || m1.d[1]!=m2.d[1]) {
+            return -1;
+        }
+        break;
+        default: printf("Operateur non disponible"); return 0; break;
+        
+    }
+    return 1;
+}
 
