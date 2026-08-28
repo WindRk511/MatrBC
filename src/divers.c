@@ -128,7 +128,7 @@ int compatibility(int* d1,int* d2,char o) {
         } else return 1;
         break;
         
-          // compatibilité sur produit
+          // compatibilité sur somme
         case 's':
         if(d1[0]!=d2[0] || d1[1]!=d2[1]) {
             return -1;

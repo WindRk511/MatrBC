@@ -76,7 +76,7 @@ int compatibilitysm(stmat m1,stmat m2,char o) {
         }
         break;
         
-          // compatibilité sur produit
+          // compatibilité sur somme
         case 's':
         if(m1.d[0]!=m2.d[0] || m1.d[1]!=m2.d[1]) {
             return -1;

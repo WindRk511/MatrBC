@@ -28,13 +28,13 @@ stmat mmcreatc(int* d, char op) {
       printf("Entrer la taille de matrice : ");
       m=dimdefsm(m);
       if(op == 's') {
-         if(compatibility(d,m.d,op)<0) {
+         if(compatibility(d,m.d,op)!=1) {
             printf("%dx%d incompatible avec %dx%d\n",d[0],d[1],m.d[0],m.d[1]);
             printf("Ressayer svp\n"); continue;
          }
       }
       else if(op == 'p') {
-         if(compatibility(d,m.d,op)<0) {
+         if(compatibility(d,m.d,op)!=1) {
             printf("%dx%d incompatible avec %dx%d\n",d[0],d[1],m.d[0],m.d[1]);
             printf("Ressayer svp\n"); continue;
          }
@@ -77,6 +77,7 @@ void mproduit() {
     
     for (i=0; i < Nm; i++ ) {
         printf(">Matrice %d \n", i+1);
+        if(i==0) { m[i]=mmcreat(); continue;}
         m[i]=mmcreatc(m[i-1].d,'p');
     }
     
