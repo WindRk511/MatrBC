@@ -9,6 +9,7 @@
 #include"matrice.h"
 #include"matrice2sm.h"
 
+// reserver tableau pour matrice
 float** reserver(int l, int c) {
     float** M;
     M=malloc((sizeof(float*)*l));
@@ -17,6 +18,7 @@ float** reserver(int l, int c) {
     return M;
 }
 
+// remplissage de matrice
 void remplism(stmat stm) {
     float** M;
     int i,j;
@@ -32,6 +34,7 @@ void remplism(stmat stm) {
     }
 }
 
+// reserversm tableau pour matrice dans le structure stmat
 stmat reserversm(int l, int c) {
     stmat sm;
     sm.d[0]=l; sm.d[1]=c;
@@ -39,6 +42,7 @@ stmat reserversm(int l, int c) {
     return sm;
 }
 
+// reserversm tableau pour matrice dans le structure stmat et remplire ce matrice
 stmat resremsm(int l, int c) {
     stmat sm=reserversm(l,c);
     remplism(sm);
@@ -46,6 +50,7 @@ stmat resremsm(int l, int c) {
     return sm;
 }
 
+// affichage de contenu de matrice
 void voir(float** M, int* dim) {
     int i,j;
     for(i=0;i<dim[0];i++){
@@ -57,6 +62,7 @@ void voir(float** M, int* dim) {
     }
 }
 
+// affichage de contenu de matrice dans le structure de matrice
 void voirsm(stmat sm) {
     int i,j;
     float **M=sm.m;
@@ -69,16 +75,20 @@ void voirsm(stmat sm) {
     }
 }
 
+//liberer le memoire alloé pour le tableau de deux dimention
 void liberer(float** M, int ligne) {
     for (int i=0; i<ligne ;i++)
         free(M[i]);
     free(M);
 }
 
+// liberer le memoire alloé dans le structure de matrice
 void liberersm(stmat M) {
     liberer(M.m,M.d[0]);
 }
 
+
+// supprimer une ligne et une colonne d'une matrice
 stmat croixsup(stmat M,int li, int cl) {
     stmat m=reserversm(M.d[0]-1,M.d[1]-1);
         float *pm;
@@ -99,6 +109,7 @@ stmat croixsup(stmat M,int li, int cl) {
     return m;
 }
 
+// definition de dimention de matrice pour le structure stmat
 stmat dimdefsm(stmat M) {
     char c[6];
     while(getchar()!='\n');

@@ -149,6 +149,7 @@ void mcomat() {
     
 }
 
+// menu somme ou soustraction de matrice
 void msomme(char op) {
    stmat m,S,smtemp;
    int i,Nm,d[2];

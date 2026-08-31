@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include "matrice2sm.h"
 
+// calcule determinant d'une matrice
 float codet(float** M, int *dim) {
     int i;
     float S=0;
@@ -46,6 +47,7 @@ float codet(float** M, int *dim) {
 
 }
 
+// racourci pour le calcul determinant d'une matrice
 float detsm(stmat sm) {
     float det=codet(sm.m,sm.d);
     return det;

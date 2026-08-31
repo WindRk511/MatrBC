@@ -28,7 +28,8 @@ int menu(int choix) {
        case 5: mdeter(); break;
        case 6: minv(); break;
        case 7: mcomat(); break;
-       default : printf("Choix incorrect\n"); menu(0); break;
+       default : printf("Choix incorrect\n"); 
+       menu(0); break;  // relancer le menu
     }
     return 0;
 }
