@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include<stdlib.h>
-#include "matrice.h"
-#include "matrice2sm.h"
 
-
+#include "operation.h"
 
 stmat inv2(stmat sm) {
     float det=detsm(sm);
