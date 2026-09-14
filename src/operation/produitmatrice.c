@@ -2,7 +2,10 @@
  * @file produitmatrice.c
  * @brief calcule de produit matriciel
  */
- #include "operation.h"
+
+ #include<stdlib.h>
+#include "matrice.h"
+#include "matrice2sm.h"
 
 stmat produit(stmat m1,stmat m2) {
     int i,j,k;

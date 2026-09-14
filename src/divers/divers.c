@@ -3,7 +3,12 @@
  * @brief divers utilitaire
  */
  
-#include"divers.h"
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include"matrice.h"
+#include"matrice2sm.h"
 
 // reserver tableau pour matrice
 float** reserver(int l, int c) {

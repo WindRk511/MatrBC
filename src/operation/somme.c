@@ -1,6 +1,9 @@
 /** @file somme de matrice
  */
-#include "operation.h"
+#include <stdio.h>
+#include<stdlib.h>
+#include "matrice.h"
+#include "matrice2sm.h"
 
 stmat sommesm(stmat m1,stmat m2) {
     stmat M;

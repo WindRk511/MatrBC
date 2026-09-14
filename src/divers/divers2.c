@@ -3,7 +3,11 @@
  * @brief outil supplementaire 
  */
  
-#include"divers.h"
+
+#include<stdio.h>
+#include<stdlib.h>
+#include"matrice.h"
+#include"matrice2sm.h"
 
 // calcul trace
 float tracesm(stmat M) {

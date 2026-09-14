@@ -1,4 +1,6 @@
-#include "operation.h"
+#include<stdlib.h>
+#include "matrice.h"
+#include "matrice2sm.h"
 
 // calcule determinant d'une matrice
 float codet(float** M, int *dim) {
