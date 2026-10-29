@@ -108,6 +108,7 @@ void mdeter() {
     do {
         printf("Entrer le dimention : ");
         scanf("%d %d",dim,dim+1);
+            while(getchar()!='\n'); // vider le buffer de stdin
         if (dim[0]!=dim[1]) {
             printf("\nIl faut matrice carré pour calculer le determinant\n");
         }
