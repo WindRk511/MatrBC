@@ -32,14 +32,14 @@ stmat trasposersm(stmat M) {
     return trs;
 }
 
-// trasposé pour remplacer
+// trasposé pour remplacer, libere l'ancien memoire
 stmat trasprep(stmat M) {
     stmat tma=trasposersm(M);
     liberersm(M);
     return tma;
 }
 
-//comatrice
+//comatrice 2x2
 stmat comat2sm(stmat M) {
     stmat m=reserversm(M.d[0],M.d[1]);
     m.m[0][0]=M.m[1][1];
@@ -48,6 +48,8 @@ stmat comat2sm(stmat M) {
     m.m[1][1]=M.m[2][2];
     return m;
 }
+
+// comatrice
 stmat comatsm(stmat M) {
     stmat cm;
     if (M.d[0]==2 && M.d[1]==2) {
@@ -56,14 +58,15 @@ stmat comatsm(stmat M) {
     }
     
     cm=reserversm(M.d[0],M.d[1]);
-    float* lcom=malloc(sizeof(float)*M.d[0]);
+    float* lcom=malloc(sizeof(float)*M.d[0]);   //ligne pour le coefficient de comatrice
     
     for(int i=0; i<M.d[1];i++) {
-        lcomdet(M,&lcom,i);
+        lcomdet(M,&lcom,i);     // recuper le ligne pour les coefficients de comatrice
         for(int j=0; j< M.d[0]; j++) { 
             cm.m[j][i]=lcom[j];
         }
     }
+    free(lcom);
     return cm;
 }
 

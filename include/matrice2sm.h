@@ -78,6 +78,7 @@ stmat trasprep(stmat M);
 
 /**
  * @brief calcul comatrice
+ * @param M matrice
  * @return comatrice
  */
 stmat comatsm(stmat M);

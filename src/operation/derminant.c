@@ -2,7 +2,12 @@
 #include "matrice.h"
 #include "matrice2sm.h"
 
-// calcule determinant d'une matrice
+/** 
+ * @brief calcule determinant d'une matrice
+ * @param M matrice
+ * @param dim tableau de dimention de matrice
+ * @return determinant
+*/
 float codet(float** M, int *dim) {
     int i;
     float S=0;
@@ -13,7 +18,7 @@ float codet(float** M, int *dim) {
         return S;
     }
 
-    spin=-1;
+    spin=-1;   
     for(i=0; i < dim[0]; i++) {
         spin=-spin;
         if(M[i][0]==0) {
@@ -52,6 +57,7 @@ float detsm(stmat sm) {
     return det;
 }
 
+// recuperer le ligne pour les coefficients de comatrice d'une colonne indique dans l'argument
 void lcomdet(stmat sm, float **coef, int c) {
     stmat tsm;
     int spin=1;
@@ -62,5 +68,6 @@ void lcomdet(stmat sm, float **coef, int c) {
             tsm=croixsup(sm,i,c); // supprimmer le ligne i et colonne c
             coef[0][i]=spin*detsm(tsm); // leur coefficient commatrice de chaque ligne de ce colonne
     }
+    liberersm(tsm);
     
 }

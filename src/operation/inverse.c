@@ -4,6 +4,7 @@
 #include "matrice.h"
 #include "matrice2sm.h"
 
+// inversion de matrice 2x2
 stmat inv2(stmat sm) {
     float det=detsm(sm);
     float temp;
@@ -24,8 +25,7 @@ stmat inv2(stmat sm) {
     return mi; 
 }
 
-
-
+// inversion de matrice
 stmat inversesm(stmat M) {
     if (M.d[0]==2 && M.d[1]==2) {
         stmat in=inv2(M);

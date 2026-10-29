@@ -116,20 +116,23 @@ stmat dimdefsm(stmat M) {
     while(getchar()!='\n');
     fgets(c,5,stdin);
     printf("%s\n",c);
-    if(strchr(c,'x')!=NULL)
-      sscanf(c, "%dx%d",&M.d[0],&M.d[1]);
+
+    // mettre le dimention dans le structure de matrice .d
+    if(strchr(c,'x')!=NULL)     // verfication si il y a x à l'entrer eg: 2x3
+      sscanf(c, "%dx%d",&M.d[0],&M.d[1]);   
     else 
         sscanf(c, "%d %d",&M.d[0],&M.d[1]);
     
     if(M.d[0]==0 || M.d[1]==0) {
         printf("Dimension %dx%d est non valide.\n",M.d[0],M.d[1]);
         printf("Reentrer svp : ");
-        M=dimdefsm(M);
+        M=dimdefsm(M);      // revenir à la fonction dimdefsm pour reentrer le dimention
     }
     
     return M;
 }
 
+// test de compatibilité de matrice
 int compatibility(int* d1,int* d2,char o) {
    
     switch (o) {
@@ -137,14 +140,14 @@ int compatibility(int* d1,int* d2,char o) {
         case 'p':
         if(d1[0]!=d2[1]) {
             return -1;
-        } else return 1;
+        }
         break;
         
           // compatibilité sur somme
         case 's':
         if(d1[0]!=d2[0] || d1[1]!=d2[1]) {
             return -1;
-        } else return 1;
+        }
         break;
         default: printf("Operateur non disponible"); return 0; break;
         
