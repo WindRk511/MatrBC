@@ -113,7 +113,7 @@ stmat croixsup(stmat M,int li, int cl) {
 // definition de dimention de matrice pour le structure stmat
 stmat dimdefsm(stmat M) {
     char c[6];
-    while(getchar()!='\n');
+    while(getchar()!='\n'); // vider le buffer de stdin pour eviter le probleme de fgets
     fgets(c,5,stdin);
     printf("%s\n",c);
 
